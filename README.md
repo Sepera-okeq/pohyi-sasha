@@ -4,7 +4,7 @@ A modern Next.js website with MDX support, internationalization, and theming.
 
 ## Features
 
-- ✨ **Next.js 15+** with App Router
+- ✨ **Next.js 16** with App Router
 - 🌍 **Internationalization (i18n)** - Support for Russian (ru), English (en), and Kazakh (kz)
 - 🎨 **Theme Switching** - Light and dark mode support
 - 📝 **MDX Support** - Write content in MDX format
@@ -108,7 +108,7 @@ Toggle between light and dark themes using the theme button in the navigation ba
 
 ## Technology Stack
 
-- **Framework**: Next.js 15
+- **Framework**: Next.js 16
 - **Language**: TypeScript
 - **Styling**: TailwindCSS
 - **Content**: MDX (via @next/mdx and next-mdx-remote)
