@@ -1,0 +1,68 @@
+---
+title: "Example Page with TSX"
+---
+
+# Example Page with Embedded TSX Code
+
+This page demonstrates how to use MDX to write rich content with React components.
+
+## Interactive Component Example
+
+Below is an example showing how you can create custom React components. While this page shows static content, you can create separate `.tsx` component files and import them into MDX:
+
+<div style={{
+  padding: '2rem',
+  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+  color: 'white',
+  borderRadius: '0.75rem',
+  margin: '2rem 0',
+  boxShadow: '0 10px 30px rgba(0,0,0,0.2)'
+}}>
+  <h2 style={{ fontSize: '1.75rem', fontWeight: 'bold', marginBottom: '1rem' }}>
+    🚀 Innovative Solutions
+  </h2>
+  <p style={{ fontSize: '1.125rem', lineHeight: '1.75' }}>
+    We leverage the latest technologies to create solutions that keep you ahead of the competition. Our team of experts is dedicated to delivering excellence in every project.
+  </p>
+</div>
+
+## Features
+
+You can:
+- Write **Markdown** content normally
+- Use inline JSX/TSX components with `<div>`, `<span>`, etc.
+- Style components with inline styles or className
+- Import external React components from separate files
+
+## Code Example
+
+To use custom React components with hooks and localization, create a separate component file:
+
+```tsx
+// components/custom-box.tsx
+'use client';
+
+import { useTranslations } from 'next-intl';
+
+export function CustomBox() {
+  const t = useTranslations('features');
+  return (
+    <div className="p-8 bg-blue-600 text-white rounded-lg">
+      <h2>{t('feature1.title')}</h2>
+      <p>{t('feature1.description')}</p>
+    </div>
+  );
+}
+```
+
+Then import it in your MDX:
+
+```mdx
+import { CustomBox } from '@/components/custom-box';
+
+# My Page
+
+<CustomBox />
+```
+
+This approach gives you full access to React hooks, localization, and all Next.js features!

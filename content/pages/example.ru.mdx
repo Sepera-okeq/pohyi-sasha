@@ -1,0 +1,68 @@
+---
+title: "Пример страницы с TSX"
+---
+
+# Пример страницы со встроенным TSX кодом
+
+Эта страница демонстрирует, как использовать MDX для создания богатого контента с React компонентами.
+
+## Пример интерактивного компонента
+
+Ниже представлен пример, показывающий, как можно создавать пользовательские React компоненты. Хотя эта страница показывает статический контент, вы можете создавать отдельные файлы компонентов `.tsx` и импортировать их в MDX:
+
+<div style={{
+  padding: '2rem',
+  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+  color: 'white',
+  borderRadius: '0.75rem',
+  margin: '2rem 0',
+  boxShadow: '0 10px 30px rgba(0,0,0,0.2)'
+}}>
+  <h2 style={{ fontSize: '1.75rem', fontWeight: 'bold', marginBottom: '1rem' }}>
+    🚀 Инновационные решения
+  </h2>
+  <p style={{ fontSize: '1.125rem', lineHeight: '1.75' }}>
+    Мы используем новейшие технологии для создания решений, которые держат вас впереди конкурентов. Наша команда экспертов стремится к совершенству в каждом проекте.
+  </p>
+</div>
+
+## Возможности
+
+Вы можете:
+- Писать **Markdown** контент как обычно
+- Использовать inline JSX/TSX компоненты с `<div>`, `<span>`, и т.д.
+- Стилизовать компоненты inline стилями или className
+- Импортировать внешние React компоненты из отдельных файлов
+
+## Пример кода
+
+Для использования пользовательских React компонентов с хуками и локализацией создайте отдельный файл компонента:
+
+```tsx
+// components/custom-box.tsx
+'use client';
+
+import { useTranslations } from 'next-intl';
+
+export function CustomBox() {
+  const t = useTranslations('features');
+  return (
+    <div className="p-8 bg-blue-600 text-white rounded-lg">
+      <h2>{t('feature1.title')}</h2>
+      <p>{t('feature1.description')}</p>
+    </div>
+  );
+}
+```
+
+Затем импортируйте его в ваш MDX:
+
+```mdx
+import { CustomBox } from '@/components/custom-box';
+
+# Моя страница
+
+<CustomBox />
+```
+
+Этот подход дает вам полный доступ к React хукам, локализации и всем возможностям Next.js!

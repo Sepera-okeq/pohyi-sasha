@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import { getFooterSections } from '@/config/navigation';
+import { ThemeToggle } from './theme-toggle';
 
 export function Footer() {
   const locale = useLocale();
@@ -64,7 +65,8 @@ export function Footer() {
               {locale === 'en' && ' All rights reserved.'}
               {locale === 'kz' && ' Барлық құқықтар қорғалған.'}
             </p>
-            <div className="flex space-x-6">
+            <div className="flex items-center space-x-6">
+              <ThemeToggle />
               <a
                 href="https://github.com"
                 target="_blank"

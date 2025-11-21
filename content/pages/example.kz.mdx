@@ -1,0 +1,68 @@
+---
+title: "TSX бар мысал беті"
+---
+
+# Кірістірілген TSX кодымен мысал бет
+
+Бұл бет React компоненттерімен бай мазмұн жасау үшін MDX пайдалануды көрсетеді.
+
+## Интерактивті компонент мысалы
+
+Төменде пайдаланушы React компоненттерін қалай жасауға болатынын көрсететін мысал берілген. Бұл бет статикалық мазмұнды көрсетсе де, сіз бөлек `.tsx` компонент файлдарын жасап, оларды MDX-ке импорттай аласыз:
+
+<div style={{
+  padding: '2rem',
+  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+  color: 'white',
+  borderRadius: '0.75rem',
+  margin: '2rem 0',
+  boxShadow: '0 10px 30px rgba(0,0,0,0.2)'
+}}>
+  <h2 style={{ fontSize: '1.75rem', fontWeight: 'bold', marginBottom: '1rem' }}>
+    🚀 Инновациялық шешімдер
+  </h2>
+  <p style={{ fontSize: '1.125rem', lineHeight: '1.75' }}>
+    Біз сізді бәсекелестерден озық ұстайтын шешімдер жасау үшін ең соңғы технологияларды қолданамыз. Біздің сарапшылар тобы әрбір жобада үздік нәтижелерге ұмтылады.
+  </p>
+</div>
+
+## Мүмкіндіктер
+
+Сіз мүмкіндігіңіз:
+- **Markdown** мазмұнын әдеттегідей жазу
+- `<div>`, `<span>` және т.б. inline JSX/TSX компоненттерін пайдалану
+- Компоненттерді inline стильдермен немесе className арқылы стильдеу
+- Бөлек файлдардан сыртқы React компоненттерін импорттау
+
+## Код мысалы
+
+Хуктар мен локализациямен пайдаланушы React компоненттерін пайдалану үшін бөлек компонент файлын жасаңыз:
+
+```tsx
+// components/custom-box.tsx
+'use client';
+
+import { useTranslations } from 'next-intl';
+
+export function CustomBox() {
+  const t = useTranslations('features');
+  return (
+    <div className="p-8 bg-blue-600 text-white rounded-lg">
+      <h2>{t('feature1.title')}</h2>
+      <p>{t('feature1.description')}</p>
+    </div>
+  );
+}
+```
+
+Содан кейін оны MDX-ке импорттаңыз:
+
+```mdx
+import { CustomBox } from '@/components/custom-box';
+
+# Менің бетім
+
+<CustomBox />
+```
+
+Бұл тәсіл сізге React хуктарына, локализацияға және Next.js-тің барлық мүмкіндіктеріне толық қол жеткізуді береді!

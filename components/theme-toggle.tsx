@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { useTheme } from 'next-themes';
 import { useTranslations } from 'next-intl';
+import { Sun, Moon } from 'lucide-react';
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -15,8 +16,8 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <button className="px-3 py-2 rounded-md border border-gray-300 dark:border-gray-700">
-        {t('toggle')}
+      <button className="p-2 rounded-md border border-gray-300 dark:border-gray-700">
+        <Sun className="w-5 h-5" />
       </button>
     );
   }
@@ -24,10 +25,10 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="px-3 py-2 rounded-md border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+      className="p-2 rounded-md border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
       aria-label={t('toggle')}
     >
-      {theme === 'dark' ? '🌙' : '☀️'}
+      {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
     </button>
   );
 }

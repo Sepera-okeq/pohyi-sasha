@@ -5,6 +5,7 @@ import { locales } from '@/i18n';
 import { ThemeProvider } from '@/components/theme-provider';
 import { NavigationAdvanced } from '@/components/navigation-advanced';
 import { Footer } from '@/components/footer';
+import { PageBreadcrumb } from '@/components/page-breadcrumb';
 import '@/app/globals.css';
 
 export function generateStaticParams() {
@@ -38,6 +39,7 @@ export default async function LocaleLayout({
             disableTransitionOnChange
           >
             <NavigationAdvanced />
+            <PageBreadcrumb />
             <main>
               {children}
             </main>
