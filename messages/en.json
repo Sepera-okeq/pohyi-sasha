@@ -1,0 +1,15 @@
+{
+  "nav": {
+    "home": "Home",
+    "news": "News",
+    "contacts": "Contacts"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "toggle": "Toggle theme"
+  },
+  "language": {
+    "select": "Select language"
+  }
+}
