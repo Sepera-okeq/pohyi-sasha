@@ -3,7 +3,8 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales } from '@/i18n';
 import { ThemeProvider } from '@/components/theme-provider';
-import { Navigation } from '@/components/navigation';
+import { NavigationAdvanced } from '@/components/navigation-advanced';
+import { Footer } from '@/components/footer';
 import '@/app/globals.css';
 
 export function generateStaticParams() {
@@ -36,10 +37,11 @@ export default async function LocaleLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <Navigation />
-            <main className="container mx-auto px-4 py-8">
+            <NavigationAdvanced />
+            <main>
               {children}
             </main>
+            <Footer />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

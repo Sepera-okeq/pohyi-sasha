@@ -32,18 +32,20 @@ export default async function NewsArticlePage({
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <article>
-        <header className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">{article.title}</h1>
-          <time className="text-gray-600 dark:text-gray-400">
-            {new Date(article.date).toLocaleDateString(locale)}
-          </time>
-        </header>
-        <div className="prose prose-gray dark:prose-invert max-w-none">
-          <MDXRemote source={article.content} />
-        </div>
-      </article>
+    <div className="container mx-auto px-4 py-16">
+      <div className="max-w-4xl mx-auto">
+        <article>
+          <header className="mb-8">
+            <h1 className="text-4xl font-bold mb-2">{article.title}</h1>
+            <time className="text-gray-600 dark:text-gray-400">
+              {new Date(article.date).toLocaleDateString(locale)}
+            </time>
+          </header>
+          <div className="prose prose-gray dark:prose-invert max-w-none">
+            <MDXRemote source={article.content} />
+          </div>
+        </article>
+      </div>
     </div>
   );
 }
