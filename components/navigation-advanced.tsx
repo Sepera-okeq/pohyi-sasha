@@ -4,9 +4,27 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLocale } from 'next-intl';
+import { Home, Newspaper, Info, Mail, Code, Users, BookOpen, FileCode, Table } from 'lucide-react';
 import { LanguageDropdown } from './language-dropdown';
 import { getNavigationItems, type NavigationItem } from '@/config/navigation';
-import { getIcon } from '@/lib/icons';
+
+// Map icon names to Lucide components
+const iconMap: Record<string, any> = {
+  Home,
+  Newspaper,
+  Info,
+  Mail,
+  Code,
+  Users,
+  BookOpen,
+  FileCode,
+  Table,
+};
+
+function getIcon(iconName?: string) {
+  if (!iconName) return null;
+  return iconMap[iconName] || null;
+}
 
 export function NavigationAdvanced() {
   const locale = useLocale();
