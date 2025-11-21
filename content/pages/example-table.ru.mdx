@@ -1,0 +1,96 @@
+---
+title: "Настоящий shadcn/ui Table компонент"
+---
+
+# Настоящий shadcn/ui Table компонент в MDX
+
+Эта страница демонстрирует **настоящий, исполняемый shadcn/ui Table компонент**, интегрированный напрямую в MDX!
+
+## 📊 Живая таблица данных с shadcn/ui
+
+Ниже представлен **настоящий** компонент shadcn/ui Table со стилизованными значками статуса и интерактивными эффектами при наведении:
+
+<DataTableDemo />
+
+## ✨ Что вы видите
+
+Это не статический HTML или пример кода - это **настоящий React компонент**, использующий:
+- ✅ Компоненты shadcn/ui Table (TableHeader, TableRow, TableCell и т.д.)
+- ✅ Классы Tailwind CSS для стилизации
+- ✅ Динамический рендеринг из JavaScript данных
+- ✅ Значки статуса с условной стилизацией
+- ✅ Поддержка темной темы
+- ✅ Адаптивный дизайн
+
+## 🎯 Код компонента
+
+Компонент `DataTableDemo` определен в `components/mdx/data-table-demo.tsx`:
+
+```tsx
+'use client';
+
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+
+const invoices = [
+  { id: 'INV001', status: 'Paid', method: 'Credit Card', amount: '$250.00' },
+  { id: 'INV002', status: 'Pending', method: 'PayPal', amount: '$150.00' },
+  // ... больше данных
+];
+
+export function DataTableDemo() {
+  return (
+    <Table>
+      <TableCaption>Список ваших недавних счетов.</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Счет</TableHead>
+          <TableHead>Статус</TableHead>
+          <TableHead>Метод</TableHead>
+          <TableHead className="text-right">Сумма</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {invoices.map((invoice) => (
+          <TableRow key={invoice.id}>
+            <TableCell>{invoice.id}</TableCell>
+            <TableCell>{invoice.status}</TableCell>
+            <TableCell>{invoice.method}</TableCell>
+            <TableCell className="text-right">{invoice.amount}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+}
+```
+
+## 🚀 Как использовать
+
+Просто используйте имя компонента в вашем MDX файле:
+
+```mdx
+# Моя страница со счетами
+
+<DataTableDemo />
+```
+
+Никаких импортов не нужно! Компонент зарегистрирован глобально в рендерере MDX и готов к использованию.
+
+## �� Больше компонентов shadcn/ui
+
+Вы можете использовать ЛЮБОЙ компонент shadcn/ui таким образом:
+- Таблицы (как показано выше)
+- Графики (с recharts)
+- Формы, Диалоги, Выпадающие списки
+- Карточки, Значки, Кнопки
+- И многое другое!
+
+Просто создайте компонент в `components/mdx/` и зарегистрируйте его в файле page.tsx.

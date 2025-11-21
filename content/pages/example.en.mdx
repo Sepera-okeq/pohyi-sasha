@@ -1,0 +1,68 @@
+---
+title: "Example Page with Executable TSX"
+---
+
+# Example Page with Real Executable TSX Components
+
+This page demonstrates **real executable TSX code** in MDX! All components below are actual React components with state, hooks, and interactivity.
+
+## 🎯 Interactive Component with State
+
+This is a **real React component** with useState hook. Click the button to see it work!
+
+<InteractiveCard />
+
+## 🎨 Custom Gradient Box Component
+
+You can create your own components and use them directly in MDX:
+
+<GradientBox title="Custom Component">
+  This is a reusable GradientBox component! You can pass props like title and children.
+  It's styled with Tailwind CSS and works in both light and dark modes.
+</GradientBox>
+
+## ✨ Features
+
+With this setup, you can:
+- ✅ Write **executable TSX code** directly in MDX files
+- ✅ Use React hooks (useState, useEffect, etc.)
+- ✅ Access Next-intl for localization
+- ✅ Use Tailwind CSS classes
+- ✅ Create interactive components with event handlers
+- ✅ Pass props to components
+
+## 📝 How It Works
+
+1. Create a component in `components/mdx/your-component.tsx`:
+
+```tsx
+'use client';
+
+import { useState } from 'react';
+
+export function YourComponent() {
+  const [count, setCount] = useState(0);
+  
+  return (
+    <div className="p-4 bg-blue-500 text-white rounded-lg">
+      <button onClick={() => setCount(count + 1)}>
+        Clicked {count} times
+      </button>
+    </div>
+  );
+}
+```
+
+2. The component is automatically available in MDX - just use it:
+
+```mdx
+# My Page
+
+<YourComponent />
+```
+
+No imports needed! The components are registered globally in the MDX renderer.
+
+## 🚀 This is Real TSX!
+
+Everything you see above is actual executable TypeScript/React code, not static HTML or documentation examples!

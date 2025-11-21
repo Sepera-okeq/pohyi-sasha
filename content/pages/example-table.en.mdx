@@ -1,0 +1,96 @@
+---
+title: "Real shadcn/ui Table Component"
+---
+
+# Real shadcn/ui Table Component in MDX
+
+This page demonstrates a **real, executable shadcn/ui Table component** integrated directly in MDX!
+
+## 📊 Live Data Table with shadcn/ui
+
+Below is an **actual** shadcn/ui Table component with styled status badges and interactive hover effects:
+
+<DataTableDemo />
+
+## ✨ What You're Seeing
+
+This is not static HTML or a code example - it's a **real React component** using:
+- ✅ shadcn/ui Table components (TableHeader, TableRow, TableCell, etc.)
+- ✅ Tailwind CSS classes for styling
+- ✅ Dynamic rendering from JavaScript data
+- ✅ Status badges with conditional styling
+- ✅ Dark mode support
+- ✅ Responsive design
+
+## 🎯 The Component Code
+
+The `DataTableDemo` component is defined in `components/mdx/data-table-demo.tsx`:
+
+```tsx
+'use client';
+
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+
+const invoices = [
+  { id: 'INV001', status: 'Paid', method: 'Credit Card', amount: '$250.00' },
+  { id: 'INV002', status: 'Pending', method: 'PayPal', amount: '$150.00' },
+  // ... more data
+];
+
+export function DataTableDemo() {
+  return (
+    <Table>
+      <TableCaption>A list of your recent invoices.</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Invoice</TableHead>
+          <TableHead>Status</TableHead>
+          <TableHead>Method</TableHead>
+          <TableHead className="text-right">Amount</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {invoices.map((invoice) => (
+          <TableRow key={invoice.id}>
+            <TableCell>{invoice.id}</TableCell>
+            <TableCell>{invoice.status}</TableCell>
+            <TableCell>{invoice.method}</TableCell>
+            <TableCell className="text-right">{invoice.amount}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+}
+```
+
+## 🚀 How to Use It
+
+Just use the component name in your MDX file:
+
+```mdx
+# My Invoice Page
+
+<DataTableDemo />
+```
+
+No imports needed! The component is registered globally in the MDX renderer and ready to use.
+
+## 📈 More shadcn/ui Components
+
+You can use ANY shadcn/ui component this way:
+- Tables (as shown above)
+- Charts (with recharts)
+- Forms, Dialogs, Dropdowns
+- Cards, Badges, Buttons
+- And much more!
+
+Just create the component in `components/mdx/` and register it in the page.tsx file.

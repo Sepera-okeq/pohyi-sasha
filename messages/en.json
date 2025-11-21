@@ -1,0 +1,48 @@
+{
+  "nav": {
+    "home": "Home",
+    "news": "News",
+    "contacts": "Contacts"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "toggle": "Toggle theme"
+  },
+  "language": {
+    "select": "Select language"
+  },
+  "hero": {
+    "title": "Transform Your Business with Innovation",
+    "subtitle": "We deliver cutting-edge solutions that drive growth and success",
+    "cta": "Get Started"
+  },
+  "features": {
+    "title": "Why Choose Us",
+    "subtitle": "We are an awesome company with amazing features",
+    "feature1": {
+      "title": "Innovative Solutions",
+      "description": "We leverage the latest technologies to create solutions that keep you ahead of the competition"
+    },
+    "feature2": {
+      "title": "Expert Team",
+      "description": "Our team of experienced professionals is dedicated to delivering excellence in every project"
+    },
+    "feature3": {
+      "title": "24/7 Support",
+      "description": "Round-the-clock support to ensure your business runs smoothly without interruption"
+    },
+    "feature4": {
+      "title": "Scalable Platform",
+      "description": "Our solutions grow with your business, adapting to your changing needs"
+    },
+    "feature5": {
+      "title": "Data Security",
+      "description": "Enterprise-grade security measures to protect your valuable data and operations"
+    },
+    "feature6": {
+      "title": "Fast Delivery",
+      "description": "Rapid implementation and deployment to get your projects up and running quickly"
+    }
+  }
+}
