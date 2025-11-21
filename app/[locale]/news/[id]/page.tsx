@@ -2,6 +2,15 @@ import { notFound } from 'next/navigation';
 import { getNewsArticle, getNewsArticles } from '@/lib/mdx';
 import { type Locale, locales } from '@/i18n';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import { InteractiveCard } from '@/components/mdx/interactive-card';
+import { DataTableDemo } from '@/components/mdx/data-table-demo';
+import { GradientBox } from '@/components/mdx/gradient-box';
+
+const components = {
+  InteractiveCard,
+  DataTableDemo,
+  GradientBox,
+};
 
 export async function generateStaticParams() {
   const allParams: { locale: string; id: string }[] = [];
@@ -42,7 +51,7 @@ export default async function NewsArticlePage({
             </time>
           </header>
           <div className="prose prose-gray dark:prose-invert max-w-none">
-            <MDXRemote source={article.content} />
+            <MDXRemote source={article.content} components={components} />
           </div>
         </article>
       </div>

@@ -1,124 +1,96 @@
 ---
-title: "Table & Chart Examples"
+title: "Real shadcn/ui Table Component"
 ---
 
-# Table & Chart Examples
+# Real shadcn/ui Table Component in MDX
 
-This page demonstrates creating beautiful data tables and using shadcn/ui components in MDX.
+This page demonstrates a **real, executable shadcn/ui Table component** integrated directly in MDX!
 
-## Data Table Example
+## 📊 Live Data Table with shadcn/ui
 
-<div style={{ overflow: 'auto', marginTop: '2rem', marginBottom: '2rem' }}>
-  <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
-    <caption style={{ marginTop: '1rem', fontSize: '0.875rem', color: '#6b7280' }}>
-      A list of recent transactions
-    </caption>
-    <thead style={{ borderBottom: '1px solid #e5e7eb' }}>
-      <tr>
-        <th style={{ height: '3rem', padding: '0 1rem', textAlign: 'left', fontWeight: '500', color: '#6b7280' }}>
-          ID
-        </th>
-        <th style={{ height: '3rem', padding: '0 1rem', textAlign: 'left', fontWeight: '500', color: '#6b7280' }}>
-          Product
-        </th>
-        <th style={{ height: '3rem', padding: '0 1rem', textAlign: 'left', fontWeight: '500', color: '#6b7280' }}>
-          Status
-        </th>
-        <th style={{ height: '3rem', padding: '0 1rem', textAlign: 'right', fontWeight: '500', color: '#6b7280' }}>
-          Amount
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr style={{ borderBottom: '1px solid #e5e7eb', transition: 'background-color 0.2s' }}>
-        <td style={{ padding: '1rem', fontWeight: '500' }}>#001</td>
-        <td style={{ padding: '1rem' }}>Website Redesign</td>
-        <td style={{ padding: '1rem' }}>
-          <span style={{ color: '#10b981' }}>✓ Completed</span>
-        </td>
-        <td style={{ padding: '1rem', textAlign: 'right' }}>$2,500</td>
-      </tr>
-      <tr style={{ borderBottom: '1px solid #e5e7eb', transition: 'background-color 0.2s' }}>
-        <td style={{ padding: '1rem', fontWeight: '500' }}>#002</td>
-        <td style={{ padding: '1rem' }}>Mobile App Development</td>
-        <td style={{ padding: '1rem' }}>
-          <span style={{ color: '#f59e0b' }}>⏳ In Progress</span>
-        </td>
-        <td style={{ padding: '1rem', textAlign: 'right' }}>$8,000</td>
-      </tr>
-      <tr style={{ borderBottom: '1px solid #e5e7eb', transition: 'background-color 0.2s' }}>
-        <td style={{ padding: '1rem', fontWeight: '500' }}>#003</td>
-        <td style={{ padding: '1rem' }}>SEO Optimization</td>
-        <td style={{ padding: '1rem' }}>
-          <span style={{ color: '#10b981' }}>✓ Completed</span>
-        </td>
-        <td style={{ padding: '1rem', textAlign: 'right' }}>$1,200</td>
-      </tr>
-      <tr>
-        <td style={{ padding: '1rem', fontWeight: '500' }}>#004</td>
-        <td style={{ padding: '1rem' }}>Content Management</td>
-        <td style={{ padding: '1rem' }}>
-          <span style={{ color: '#3b82f6' }}>📋 Planned</span>
-        </td>
-        <td style={{ padding: '1rem', textAlign: 'right' }}>$3,500</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+Below is an **actual** shadcn/ui Table component with styled status badges and interactive hover effects:
 
-## Features
+<DataTableDemo />
 
-- Styled with inline styles (works in MDX)
-- Responsive design
-- Dark mode compatible
-- Can be used directly in MDX files
-- Easily customizable
+## ✨ What You're Seeing
 
-## Usage with shadcn/ui Components
+This is not static HTML or a code example - it's a **real React component** using:
+- ✅ shadcn/ui Table components (TableHeader, TableRow, TableCell, etc.)
+- ✅ Tailwind CSS classes for styling
+- ✅ Dynamic rendering from JavaScript data
+- ✅ Status badges with conditional styling
+- ✅ Dark mode support
+- ✅ Responsive design
 
-To use shadcn/ui Table components, create a separate React component file:
+## 🎯 The Component Code
+
+The `DataTableDemo` component is defined in `components/mdx/data-table-demo.tsx`:
 
 ```tsx
-// components/data-table.tsx
 'use client';
 
 import {
   Table,
   TableBody,
+  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from '@/components/ui/table';
 
-export function DataTable() {
+const invoices = [
+  { id: 'INV001', status: 'Paid', method: 'Credit Card', amount: '$250.00' },
+  { id: 'INV002', status: 'Pending', method: 'PayPal', amount: '$150.00' },
+  // ... more data
+];
+
+export function DataTableDemo() {
   return (
     <Table>
+      <TableCaption>A list of your recent invoices.</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead>ID</TableHead>
-          <TableHead>Name</TableHead>
+          <TableHead>Invoice</TableHead>
+          <TableHead>Status</TableHead>
+          <TableHead>Method</TableHead>
+          <TableHead className="text-right">Amount</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        <TableRow>
-          <TableCell>#001</TableCell>
-          <TableCell>Item 1</TableCell>
-        </TableRow>
+        {invoices.map((invoice) => (
+          <TableRow key={invoice.id}>
+            <TableCell>{invoice.id}</TableCell>
+            <TableCell>{invoice.status}</TableCell>
+            <TableCell>{invoice.method}</TableCell>
+            <TableCell className="text-right">{invoice.amount}</TableCell>
+          </TableRow>
+        ))}
       </TableBody>
     </Table>
   );
 }
 ```
 
-Then import and use it in your MDX:
+## 🚀 How to Use It
+
+Just use the component name in your MDX file:
 
 ```mdx
-import { DataTable } from '@/components/data-table';
+# My Invoice Page
 
-# My Page
-
-<DataTable />
+<DataTableDemo />
 ```
 
-This approach gives you full access to all shadcn/ui components and TailwindCSS classes!
+No imports needed! The component is registered globally in the MDX renderer and ready to use.
+
+## 📈 More shadcn/ui Components
+
+You can use ANY shadcn/ui component this way:
+- Tables (as shown above)
+- Charts (with recharts)
+- Forms, Dialogs, Dropdowns
+- Cards, Badges, Buttons
+- And much more!
+
+Just create the component in `components/mdx/` and register it in the page.tsx file.

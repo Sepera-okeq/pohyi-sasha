@@ -1,124 +1,96 @@
 ---
-title: "Table & Chart Examples"
+title: "Настоящий shadcn/ui Table компонент"
 ---
 
-# Table & Chart Examples
+# Настоящий shadcn/ui Table компонент в MDX
 
-This page demonstrates creating beautiful data tables and using shadcn/ui components in MDX.
+Эта страница демонстрирует **настоящий, исполняемый shadcn/ui Table компонент**, интегрированный напрямую в MDX!
 
-## Data Table Example
+## 📊 Живая таблица данных с shadcn/ui
 
-<div style={{ overflow: 'auto', marginTop: '2rem', marginBottom: '2rem' }}>
-  <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem' }}>
-    <caption style={{ marginTop: '1rem', fontSize: '0.875rem', color: '#6b7280' }}>
-      A list of recent transactions
-    </caption>
-    <thead style={{ borderBottom: '1px solid #e5e7eb' }}>
-      <tr>
-        <th style={{ height: '3rem', padding: '0 1rem', textAlign: 'left', fontWeight: '500', color: '#6b7280' }}>
-          ID
-        </th>
-        <th style={{ height: '3rem', padding: '0 1rem', textAlign: 'left', fontWeight: '500', color: '#6b7280' }}>
-          Product
-        </th>
-        <th style={{ height: '3rem', padding: '0 1rem', textAlign: 'left', fontWeight: '500', color: '#6b7280' }}>
-          Status
-        </th>
-        <th style={{ height: '3rem', padding: '0 1rem', textAlign: 'right', fontWeight: '500', color: '#6b7280' }}>
-          Amount
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr style={{ borderBottom: '1px solid #e5e7eb', transition: 'background-color 0.2s' }}>
-        <td style={{ padding: '1rem', fontWeight: '500' }}>#001</td>
-        <td style={{ padding: '1rem' }}>Website Redesign</td>
-        <td style={{ padding: '1rem' }}>
-          <span style={{ color: '#10b981' }}>✓ Completed</span>
-        </td>
-        <td style={{ padding: '1rem', textAlign: 'right' }}>$2,500</td>
-      </tr>
-      <tr style={{ borderBottom: '1px solid #e5e7eb', transition: 'background-color 0.2s' }}>
-        <td style={{ padding: '1rem', fontWeight: '500' }}>#002</td>
-        <td style={{ padding: '1rem' }}>Mobile App Development</td>
-        <td style={{ padding: '1rem' }}>
-          <span style={{ color: '#f59e0b' }}>⏳ In Progress</span>
-        </td>
-        <td style={{ padding: '1rem', textAlign: 'right' }}>$8,000</td>
-      </tr>
-      <tr style={{ borderBottom: '1px solid #e5e7eb', transition: 'background-color 0.2s' }}>
-        <td style={{ padding: '1rem', fontWeight: '500' }}>#003</td>
-        <td style={{ padding: '1rem' }}>SEO Optimization</td>
-        <td style={{ padding: '1rem' }}>
-          <span style={{ color: '#10b981' }}>✓ Completed</span>
-        </td>
-        <td style={{ padding: '1rem', textAlign: 'right' }}>$1,200</td>
-      </tr>
-      <tr>
-        <td style={{ padding: '1rem', fontWeight: '500' }}>#004</td>
-        <td style={{ padding: '1rem' }}>Content Management</td>
-        <td style={{ padding: '1rem' }}>
-          <span style={{ color: '#3b82f6' }}>📋 Planned</span>
-        </td>
-        <td style={{ padding: '1rem', textAlign: 'right' }}>$3,500</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+Ниже представлен **настоящий** компонент shadcn/ui Table со стилизованными значками статуса и интерактивными эффектами при наведении:
 
-## Features
+<DataTableDemo />
 
-- Styled with inline styles (works in MDX)
-- Responsive design
-- Dark mode compatible
-- Can be used directly in MDX files
-- Easily customizable
+## ✨ Что вы видите
 
-## Usage with shadcn/ui Components
+Это не статический HTML или пример кода - это **настоящий React компонент**, использующий:
+- ✅ Компоненты shadcn/ui Table (TableHeader, TableRow, TableCell и т.д.)
+- ✅ Классы Tailwind CSS для стилизации
+- ✅ Динамический рендеринг из JavaScript данных
+- ✅ Значки статуса с условной стилизацией
+- ✅ Поддержка темной темы
+- ✅ Адаптивный дизайн
 
-To use shadcn/ui Table components, create a separate React component file:
+## 🎯 Код компонента
+
+Компонент `DataTableDemo` определен в `components/mdx/data-table-demo.tsx`:
 
 ```tsx
-// components/data-table.tsx
 'use client';
 
 import {
   Table,
   TableBody,
+  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from '@/components/ui/table';
 
-export function DataTable() {
+const invoices = [
+  { id: 'INV001', status: 'Paid', method: 'Credit Card', amount: '$250.00' },
+  { id: 'INV002', status: 'Pending', method: 'PayPal', amount: '$150.00' },
+  // ... больше данных
+];
+
+export function DataTableDemo() {
   return (
     <Table>
+      <TableCaption>Список ваших недавних счетов.</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead>ID</TableHead>
-          <TableHead>Name</TableHead>
+          <TableHead>Счет</TableHead>
+          <TableHead>Статус</TableHead>
+          <TableHead>Метод</TableHead>
+          <TableHead className="text-right">Сумма</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        <TableRow>
-          <TableCell>#001</TableCell>
-          <TableCell>Item 1</TableCell>
-        </TableRow>
+        {invoices.map((invoice) => (
+          <TableRow key={invoice.id}>
+            <TableCell>{invoice.id}</TableCell>
+            <TableCell>{invoice.status}</TableCell>
+            <TableCell>{invoice.method}</TableCell>
+            <TableCell className="text-right">{invoice.amount}</TableCell>
+          </TableRow>
+        ))}
       </TableBody>
     </Table>
   );
 }
 ```
 
-Then import and use it in your MDX:
+## 🚀 Как использовать
+
+Просто используйте имя компонента в вашем MDX файле:
 
 ```mdx
-import { DataTable } from '@/components/data-table';
+# Моя страница со счетами
 
-# My Page
-
-<DataTable />
+<DataTableDemo />
 ```
 
-This approach gives you full access to all shadcn/ui components and TailwindCSS classes!
+Никаких импортов не нужно! Компонент зарегистрирован глобально в рендерере MDX и готов к использованию.
+
+## �� Больше компонентов shadcn/ui
+
+Вы можете использовать ЛЮБОЙ компонент shadcn/ui таким образом:
+- Таблицы (как показано выше)
+- Графики (с recharts)
+- Формы, Диалоги, Выпадающие списки
+- Карточки, Значки, Кнопки
+- И многое другое!
+
+Просто создайте компонент в `components/mdx/` и зарегистрируйте его в файле page.tsx.

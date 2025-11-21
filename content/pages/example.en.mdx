@@ -1,68 +1,68 @@
 ---
-title: "Example Page with TSX"
+title: "Example Page with Executable TSX"
 ---
 
-# Example Page with Embedded TSX Code
+# Example Page with Real Executable TSX Components
 
-This page demonstrates how to use MDX to write rich content with React components.
+This page demonstrates **real executable TSX code** in MDX! All components below are actual React components with state, hooks, and interactivity.
 
-## Interactive Component Example
+## 🎯 Interactive Component with State
 
-Below is an example showing how you can create custom React components. While this page shows static content, you can create separate `.tsx` component files and import them into MDX:
+This is a **real React component** with useState hook. Click the button to see it work!
 
-<div style={{
-  padding: '2rem',
-  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-  color: 'white',
-  borderRadius: '0.75rem',
-  margin: '2rem 0',
-  boxShadow: '0 10px 30px rgba(0,0,0,0.2)'
-}}>
-  <h2 style={{ fontSize: '1.75rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-    🚀 Innovative Solutions
-  </h2>
-  <p style={{ fontSize: '1.125rem', lineHeight: '1.75' }}>
-    We leverage the latest technologies to create solutions that keep you ahead of the competition. Our team of experts is dedicated to delivering excellence in every project.
-  </p>
-</div>
+<InteractiveCard />
 
-## Features
+## 🎨 Custom Gradient Box Component
 
-You can:
-- Write **Markdown** content normally
-- Use inline JSX/TSX components with `<div>`, `<span>`, etc.
-- Style components with inline styles or className
-- Import external React components from separate files
+You can create your own components and use them directly in MDX:
 
-## Code Example
+<GradientBox title="Custom Component">
+  This is a reusable GradientBox component! You can pass props like title and children.
+  It's styled with Tailwind CSS and works in both light and dark modes.
+</GradientBox>
 
-To use custom React components with hooks and localization, create a separate component file:
+## ✨ Features
+
+With this setup, you can:
+- ✅ Write **executable TSX code** directly in MDX files
+- ✅ Use React hooks (useState, useEffect, etc.)
+- ✅ Access Next-intl for localization
+- ✅ Use Tailwind CSS classes
+- ✅ Create interactive components with event handlers
+- ✅ Pass props to components
+
+## 📝 How It Works
+
+1. Create a component in `components/mdx/your-component.tsx`:
 
 ```tsx
-// components/custom-box.tsx
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useState } from 'react';
 
-export function CustomBox() {
-  const t = useTranslations('features');
+export function YourComponent() {
+  const [count, setCount] = useState(0);
+  
   return (
-    <div className="p-8 bg-blue-600 text-white rounded-lg">
-      <h2>{t('feature1.title')}</h2>
-      <p>{t('feature1.description')}</p>
+    <div className="p-4 bg-blue-500 text-white rounded-lg">
+      <button onClick={() => setCount(count + 1)}>
+        Clicked {count} times
+      </button>
     </div>
   );
 }
 ```
 
-Then import it in your MDX:
+2. The component is automatically available in MDX - just use it:
 
 ```mdx
-import { CustomBox } from '@/components/custom-box';
-
 # My Page
 
-<CustomBox />
+<YourComponent />
 ```
 
-This approach gives you full access to React hooks, localization, and all Next.js features!
+No imports needed! The components are registered globally in the MDX renderer.
+
+## 🚀 This is Real TSX!
+
+Everything you see above is actual executable TypeScript/React code, not static HTML or documentation examples!
